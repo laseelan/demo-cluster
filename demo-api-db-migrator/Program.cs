@@ -1,5 +1,5 @@
 ﻿
 
 Console.WriteLine("Running migrations...");
-Thread.Sleep(30_000);
+Thread.Sleep(10_000);
 Console.WriteLine("Mmigrations complete!");

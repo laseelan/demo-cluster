@@ -6,16 +6,16 @@ metadata:
     {{- include "demo-api.labels" . | nindent 4 }}
 data:
   appsettings.overrides.json: |-
-    {
-      "Logging": {
-        "LogLevel": {
-          "Default": "Error",
-          "System": "Error",
-          "Microsoft": "Error"
-        }
-      },
-      "SecretProvider": {
-        "Name": "AWS",
-        "AuthKey": "xxxxxxxxxxxx12345"
+  {
+    "Logging": {
+      "LogLevel": {
+        "Default": "Error",
+        "System": "Error",
+        "Microsoft": "Error"
       }
+    },
+    "SecretProvider": {
+      "Name": "AWS",
+      "AuthKey": "xxxxxxxxxxxx12345"
     }
+  }

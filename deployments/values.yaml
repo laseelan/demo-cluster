@@ -6,27 +6,22 @@ global:
 
 
 demo-api-db-migrator:
-
   image:
     repository: localhost:32000/demo-api-db-migrator
     pullPolicy: IfNotPresent
     tag: "0.4"
-
   job:
     ## Should the job be rescheduled on the same node if it fails, or just stopped
     restartPolicy: Never
 
 demo-api:
-
-  replicaCount: 3
-
+  replicaCount: 2
   env: 
     "ASPNETCORE_ENVIRONMENT": "Development"
-
   image:
     repository: localhost:32000/demo-api
     pullPolicy: IfNotPresent
-    tag: "0.7"
+    tag: "0.8"
 
   service:
     type: LoadBalancer
@@ -40,9 +35,7 @@ demo-api:
       - host: "api-fischer.local"
         paths: 
         - "/api"
-
   autoscaling:
     enabled: false
-
   serviceAccount:
     create: false
