@@ -3,6 +3,11 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
+    .AddJsonFile($"appsettings.Development.json", optional: true, reloadOnChange: false)
+    .AddJsonFile($"appsettings.overrides.json", optional: true, reloadOnChange: true)
+    .AddEnvironmentVariables();
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -12,7 +17,7 @@ builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo
     {
-        Version = "v1-api0.6",
+        Version = "v1-api0.7",
         Title = "DemoApi",
         Description = "An ASP.NET Core Web API for testing deployments",
         TermsOfService = new Uri("https://fischeridentity.com/terms"),
