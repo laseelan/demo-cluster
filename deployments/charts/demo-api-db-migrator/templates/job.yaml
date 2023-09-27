@@ -4,9 +4,10 @@ metadata:
   name: {{ include "demo-api-db-migrator.fullname" . }}-{{ .Release.Revision }}
   labels:
     {{- include "demo-api-db-migrator.labels" . | nindent 4 }}
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version }}
   annotations:
     # This is what defines this resource as a hook
-    "helm.sh/hook": pre-install    
+    "helm.sh/hook": pre-upgrade  
 spec:
   backoffLimit: 1
   template:
