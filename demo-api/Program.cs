@@ -12,7 +12,7 @@ builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo
     {
-        Version = "v1-api0.2",
+        Version = "v1-api0.4",
         Title = "DemoApi",
         Description = "An ASP.NET Core Web API for testing deployments",
         TermsOfService = new Uri("https://fischeridentity.com/terms"),
