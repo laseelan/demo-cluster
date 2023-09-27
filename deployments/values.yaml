@@ -10,7 +10,7 @@ demo-api-db-migrator:
   image:
     repository: localhost:32000/demo-api-db-migrator
     pullPolicy: IfNotPresent
-    tag: "0.3"
+    tag: "0.4"
 
   job:
     ## Should the job be rescheduled on the same node if it fails, or just stopped
