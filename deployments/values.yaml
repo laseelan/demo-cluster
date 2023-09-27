@@ -18,7 +18,7 @@ demo-api-db-migrator:
 
 demo-api:
 
-  replicaCount: 1
+  replicaCount: 2
 
   env: 
     "ASPNETCORE_ENVIRONMENT": "Development"
