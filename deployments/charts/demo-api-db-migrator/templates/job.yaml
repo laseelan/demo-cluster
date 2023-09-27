@@ -3,11 +3,13 @@ kind: Job
 metadata:
   name: {{ include "demo-api-db-migrator.fullname" . }}-{{ .Release.Revision }}
   labels:
-    {{- include "demo-api-db-migrator.labels" . | nindent 4 }}
-    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    {{- include "demo-api-db-migrator.labels" . | nindent 4 }}  
   annotations:
-    # This is what defines this resource as a hook
-    "helm.sh/hook": pre-upgrade  
+    # This is what defines this resource as a hook. Without this line, the
+    # job is considered part of the release.
+    "helm.sh/hook": post-upgrade
+    "helm.sh/hook-weight": "20"
+    "helm.sh/hook-delete-policy": "before-hook-creation"
 spec:
   backoffLimit: 1
   template:
