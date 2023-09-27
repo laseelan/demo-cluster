@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "demo-api-db-migrator": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+# global values
+global:
+  env: 
+    "ASPNETCORE_ENVIRONMENT": "Staging"
+    "ASPNETCORE_FORWARDEDHEADERS_ENABLED": "true"
+
+
+demo-api-db-migrator:
+
+  image:
+    repository: localhost:32000/demo-api-db-migrator
+    pullPolicy: IfNotPresent
+    tag: "0.1"
+
+  job:
+    ## Should the job be rescheduled on the same node if it fails, or just stopped
+    restartPolicy: Never
+
+demo-api:
+
+  replicaCount: 1
+
+  env: 
+    "ASPNETCORE_ENVIRONMENT": "Development"
+
+  image:
+    repository: localhost:32000/demo-api
+    pullPolicy: IfNotPresent
+    tag: "0.1"
+
+  service:
+    type: LoadBalancer
+    port: 80
+
+  ingress:
+    enabled: false
+    annotations:
+      nginx.ingress.kubernetes.io/rewrite-target: "/"
+    hosts:
+      - host: "api-fischer.local"
+        paths: 
+        - "/api"
+
+  autoscaling:
+    enabled: false
+
+  serviceAccount:
+    create: false
