@@ -5,7 +5,7 @@ metadata:
   labels:
     {{- include "identity-portal.labels" . | nindent 4 }}
 data:
-  appsettings.Development.json: |-
+  appsettings.overrides.json: |-
     {
       "Logging": {
         "LogLevel": {
@@ -24,6 +24,16 @@ data:
       "ApiDeploymentOptions": {
         "Host": "demo-cluster-identity-api.iaas-1",
         "UseSSL": false
+      }      
+    }
+  appsettings.oidc.json: |-
+    {
+      "Logging": {
+        "LogLevel": {
+          "Default": "Error",
+          "System": "Error",
+          "Microsoft": "Error"
+        }
       },
       "OidcSettings": {
         "AliasStrategy": "Segment",
