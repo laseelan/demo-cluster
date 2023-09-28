@@ -24,5 +24,22 @@ data:
       "ApiDeploymentOptions": {
         "Host": "demo-cluster-identity-api.iaas-1",
         "UseSSL": false
-      }
+      },
+      "OidcSettings": {
+        "AliasStrategy": "Segment",
+        "Options": [
+          {
+            "Authority": "https://ebs-v80-qa-20-sso.fischeridentitydev.com/auth/realms/fii",
+            "ClientId": "identity-portal",
+            "PersonaType": "EndUser",
+            "ResponseType": "code",
+            "Name": "Default SP",
+            "Segments": "fii,code,ops",
+            "UrlPath": "172.17.176.120/{segment}/portal",
+            "AdditionalProviderParameters": {
+              "acr_values": "urn:fischer:loa:1fa:pwd"
+            }
+          }          
+        ]
+      },
     }

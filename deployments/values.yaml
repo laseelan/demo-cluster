@@ -51,7 +51,7 @@ identity-portal:
   image:
     repository: localhost:32000/identity-portal
     pullPolicy: IfNotPresent
-    tag: "0.2"
+    tag: "0.3"
 
   service:
     type: LoadBalancer
