@@ -22,7 +22,6 @@ data:
         "ApplicationId": "CLOUD"
       },
       "ApiDeploymentOptions": {
-        "Host": "localhost:32700",
-        "ClientId": "identity-api-server-{orgCode}"
+        "Host": "localhost:32700"
       }
     }
