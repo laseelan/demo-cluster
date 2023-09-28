@@ -22,6 +22,6 @@ data:
         "ApplicationId": "CLOUD"
       },
       "ApiDeploymentOptions": {
-        "Host": "172.17.176.110:32700"
+        "Host": "http://172.17.176.110"
       }
     }
