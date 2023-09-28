@@ -10,7 +10,7 @@ spec:
     - port: {{ .Values.service.port }}
       targetPort: http
       protocol: TCP
-      nodePort: 44308
+      nodePort: 32700
       name: http
   selector:
     {{- include "identity-api.selectorLabels" . | nindent 4 }}
