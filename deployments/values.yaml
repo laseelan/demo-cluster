@@ -17,7 +17,7 @@ identity-api:
   image:
     repository: localhost:32000/identity-api
     pullPolicy: IfNotPresent
-    tag: "0.3"
+    tag: "0.2"
 
   service:
     type: LoadBalancer
@@ -51,7 +51,7 @@ identity-portal:
   image:
     repository: localhost:32000/identity-portal
     pullPolicy: IfNotPresent
-    tag: "0.4"
+    tag: "0.3"
 
   service:
     type: LoadBalancer

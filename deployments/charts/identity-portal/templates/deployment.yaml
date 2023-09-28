@@ -39,7 +39,10 @@ spec:
           volumeMounts:
           - name: "{{ include "identity-portal.fullname" . }}-volume"
             mountPath: /app/appsettings.oidc.json
-            subPath: appsettings.oidc.json          
+            subPath: appsettings.oidc.json     
+          - name: "{{ include "identity-api.fullname" . }}-volume"
+            mountPath: /app/appsettings.overrides.json
+            subPath: appsettings.overrides.json    
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
           {{- $env := merge .Values.env .Values.global.env -}}
