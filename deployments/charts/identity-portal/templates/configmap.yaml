@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "identity-portal.fullname" . }}
+  labels:
+    {{- include "identity-portal.labels" . | nindent 4 }}
+data:
+  appsettings.overrides.json: |-
+    {
+      "Logging": {
+        "LogLevel": {
+          "Default": "Error",
+          "System": "Error",
+          "Microsoft": "Error"
+        }
+      },
+      "SecretProvider": {
+        "Name": "LocalStack",
+        "Enabled": true,
+        "Url": "http://192.168.1.38:4566",
+        "AuthKey": "CLOUD",
+        "ApplicationId": "CLOUD"
+      },
+      "ApiDeploymentOptions": {
+        "Host": "localhost:44308"
+        "ClientId": "identity-api-server-{orgCode}"
+      }
+    }

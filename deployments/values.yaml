@@ -38,3 +38,37 @@ identity-api:
   serviceAccount:
     create: false
 
+identity-portal:
+
+  replicaCount: 1
+
+  env: 
+    "ASPNETCORE_ENVIRONMENT": "Development"
+    "AWS_ACCESS_KEY_ID": "test"
+    "AWS_REGION": "us-east-1"
+    "AWS_SECRET_ACCESS_KEY": "test"
+
+  image:
+    repository: localhost:32000/identity-portal
+    pullPolicy: IfNotPresent
+    tag: "0.1"
+
+  service:
+    type: LoadBalancer
+    port: 80
+
+  ingress:
+    enabled: false
+    annotations:
+      nginx.ingress.kubernetes.io/rewrite-target: "/"
+    hosts:
+      - host: "portal-fischer.local"
+        paths: 
+        - "/portal"
+
+  autoscaling:
+    enabled: false
+
+  serviceAccount:
+    create: false
+
