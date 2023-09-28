@@ -30,14 +30,7 @@ spec:
       volumes:
       - name: "{{ include "identity-api.fullname" . }}-volume"
         configMap:
-          name: {{ include "identity-api.fullname" . }}        
-      initContainers:
-      - name: "{{ .Chart.Name }}-init"
-        image: "ghcr.io/groundnuty/k8s-wait-for:v1.6"
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        args: 
-        - "job"
-        - "{{ .Release.Name }}-identity-api-db-migrator-{{ .Release.Revision}}"
+          name: {{ include "identity-api.fullname" . }}      
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
