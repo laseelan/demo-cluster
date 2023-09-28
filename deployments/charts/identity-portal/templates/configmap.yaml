@@ -21,8 +21,7 @@ data:
         "AuthKey": "CLOUD",
         "ApplicationId": "CLOUD"
       },
-      "ApiDeploymentOptions": {
-        "Host": "localhost:44308"
-        "ClientId": "identity-api-server-{orgCode}"
+      "External": {
+        "ApiHost": "https://ebs-v80-qa-api.fischeridentitydev.com"
       }
     }
