@@ -35,7 +35,7 @@ data:
             "ResponseType": "code",
             "Name": "Default SP",
             "Segments": "fii,code,ops",
-            "UrlPath": "172.17.176.120/{segment}/portal",
+            "UrlPath": "172.17.176.121/{segment}/portal",
             "AdditionalProviderParameters": {
               "acr_values": "urn:fischer:loa:1fa:pwd"
             }
