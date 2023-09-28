@@ -22,6 +22,6 @@ data:
         "ApplicationId": "CLOUD"
       },
       "ApiDeploymentOptions": {
-        "Host": "localhost:32700"
+        "Host": "172.17.176.110:32700"
       }
     }
