@@ -18,7 +18,7 @@ demo-api-db-migrator:
 
 demo-api:
 
-  replicaCount: 2
+  replicaCount: 1
 
   env: 
     "ASPNETCORE_ENVIRONMENT": "Development"
@@ -46,3 +46,38 @@ demo-api:
 
   serviceAccount:
     create: false
+
+identity-api:
+
+  replicaCount: 1
+
+  env: 
+    "ASPNETCORE_ENVIRONMENT": "Development"
+    "AWS_ACCESS_KEY_ID": "test"
+    "AWS_REGION": "us-east-1"
+    "AWS_SECRET_ACCESS_KEY": "test"
+
+  image:
+    repository: localhost:32000/identity-api
+    pullPolicy: IfNotPresent
+    tag: "0.2"
+
+  service:
+    type: LoadBalancer
+    port: 80
+
+  ingress:
+    enabled: false
+    annotations:
+      nginx.ingress.kubernetes.io/rewrite-target: "/"
+    hosts:
+      - host: "api-fischer.local"
+        paths: 
+        - "/api"
+
+  autoscaling:
+    enabled: false
+
+  serviceAccount:
+    create: false
+

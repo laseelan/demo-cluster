@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "identity-api.fullname" . }}
+  labels:
+    {{- include "identity-api.labels" . | nindent 4 }}
+spec:
+{{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+{{- end }}
+  selector:
+    matchLabels:
+      {{- include "identity-api.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+    {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      labels:
+        {{- include "identity-api.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "identity-api.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      volumes:
+      - name: "{{ include "identity-api.fullname" . }}-volume"
+        configMap:
+          name: {{ include "identity-api.fullname" . }}        
+      initContainers:
+      - name: "{{ .Chart.Name }}-init"
+        image: "ghcr.io/groundnuty/k8s-wait-for:v1.6"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        args: 
+        - "job"
+        - "{{ .Release.Name }}-identity-api-db-migrator-{{ .Release.Revision}}"
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          volumeMounts:
+          - name: "{{ include "identity-api.fullname" . }}-volume"
+            mountPath: /app/appsettings.overrides.json
+            subPath: appsettings.overrides.json          
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+          {{- $env := merge .Values.env .Values.global.env -}}
+          {{ range $k, $v := $env }}
+            - name: {{ $k | quote }}
+              value: {{ $v | quote }}
+          {{- end }}
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP          
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
