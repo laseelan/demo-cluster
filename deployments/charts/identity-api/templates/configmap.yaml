@@ -5,7 +5,7 @@ metadata:
   labels:
     {{- include "identity-api.labels" . | nindent 4 }}
 data:
-  appsettings.overrides.json: |-
+  appsettings.Development.json: |-
     {
       "Logging": {
         "LogLevel": {

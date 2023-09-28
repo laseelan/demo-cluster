@@ -38,8 +38,8 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           volumeMounts:
           - name: "{{ include "identity-api.fullname" . }}-volume"
-            mountPath: /app/appsettings.overrides.json
-            subPath: appsettings.overrides.json          
+            mountPath: /app/appsettings.Development.json
+            subPath: appsettings.Development.json          
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
           {{- $env := merge .Values.env .Values.global.env -}}
