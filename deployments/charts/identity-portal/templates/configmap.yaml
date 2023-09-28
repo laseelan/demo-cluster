@@ -22,6 +22,7 @@ data:
         "ApplicationId": "CLOUD"
       },
       "ApiDeploymentOptions": {
-        "Host": "demo-cluster-identity-api.iaas-1"
+        "Host": "demo-cluster-identity-api.iaas-1",
+        "UseSSL": false
       }
     }
