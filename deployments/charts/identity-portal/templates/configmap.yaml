@@ -27,19 +27,12 @@ data:
       }      
     }
   appsettings.oidc.json: |-
-    {
-      "Logging": {
-        "LogLevel": {
-          "Default": "Error",
-          "System": "Error",
-          "Microsoft": "Error"
-        }
-      },
+    {      
       "OidcSettings": {
         "AliasStrategy": "Segment",
         "Options": [
           {
-            "Authority": "https://ebs-v80-qa-20-sso.fischeridentitydev.com/auth/realms/fii",
+            "Authority": "https://ebs-v80-qa-20-sso.fischeridentitydev.com/auth/realms/fii1",
             "ClientId": "identity-portal",
             "PersonaType": "EndUser",
             "ResponseType": "code",
