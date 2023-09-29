@@ -39,13 +39,6 @@ spec:
           
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-           - name: SPRING_PROFILE
-             value: dev
-           - name: SPRING_APPLICATION_JSON
-             valueFrom:
-              configMapKeyRef:
-                name: {{ include "notification-service.fullname" . }}
-                key: application.yml
           {{- $env := merge .Values.env .Values.global.env -}}
           {{ range $k, $v := $env }}
             - name: {{ $k | quote }}
