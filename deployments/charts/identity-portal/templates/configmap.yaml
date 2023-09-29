@@ -45,11 +45,51 @@ data:
             "ResponseType": "code",
             "Name": "Default SP",
             "Segments": "fii,code,ops",
-            "UrlPath": "172.17.176.121/{segment}/portal",
+            "UrlPath": "172.17.176.120/{segment}/portal",
             "AdditionalProviderParameters": {
               "acr_values": "urn:fischer:loa:1fa:pwd"
             }
-          }          
+          },
+          {
+            "Authority": "https://ebs-v80-qa-20-sso.fischeridentitydev.com/auth/realms/fii",
+            "ClientId": "identity-portal-helpdesk",
+            "PersonaType": "DelegatedAdministrator",
+            "ResponseType": "code",
+            "Name": "Default SP",
+            "Segments": "fii,code,ops",
+            "UrlPath": "172.17.176.120/{segment}/manager",
+            "AdditionalProviderParameters": {
+              "acr_values": "urn:fischer:loa:1fa:pwd"
+            }
+          },
+          {
+            "Authority": "https://ebs-v80-qa-20-sso.fischeridentitydev.com/auth/realms/fii",
+            "ClientId": "identity-portal-admin",
+            "PersonaType": "Administrator",
+            "ResponseType": "code",
+            "Name": "Default SP",
+            "Segments": "fii,code,ops",
+            "UrlPath": "172.17.176.120/{segment}/admin",
+            "AdditionalProviderParameters": {
+              "acr_values": "urn:fischer:loa:2fa:any"
+            }
+          },
+          {
+            "Authority": "https://ebs-v80-qa-20-sso.fischeridentitydev.com/auth/realms/fii",
+            "ClientId": "impersonated-user-token",
+            "ResponseType": "code",
+            "Name": "Kiosk: Impersonated User",
+            "Segments": "fii,code,ops",
+            "UrlPath": "172.17.176.120/{segment}/kiosk"
+          },
+          {
+            "Authority": "https://ebs-v80-qa-20-sso.fischeridentitydev.com/auth/realms/fii",
+            "ClientId": "impersonated-user-token",
+            "ResponseType": "code",
+            "Name": "Claim: Impersonated User",
+            "Segments": "fii,code,ops",
+            "UrlPath": "172.17.176.120/{segment}/portal/claim"
+          }
         ]
       },
     }

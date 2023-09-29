@@ -50,7 +50,7 @@ identity-portal:
   image:
     repository: localhost:32000/identity-portal
     pullPolicy: IfNotPresent
-    tag: "0.3"
+    tag: "0.5"
 
   service:
     type: LoadBalancer
@@ -120,6 +120,7 @@ audit-service:
 
   service:
     type: LoadBalancer
+    ip: 172.17.176.120
     port: 80
 
   ingress:
