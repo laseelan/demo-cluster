@@ -116,7 +116,7 @@ audit-service:
   image:
     repository: localhost:32000/audit-service
     pullPolicy: IfNotPresent
-    tag: "0.1"
+    tag: "0.2"
 
   service:
     type: LoadBalancer
