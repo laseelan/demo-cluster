@@ -5,6 +5,7 @@ global:
     "ASPNETCORE_FORWARDEDHEADERS_ENABLED": "true"
 
 identity-api:
+
   replicaCount: 1
   env: 
     "ASPNETCORE_ENVIRONMENT": "Development"
@@ -37,7 +38,9 @@ identity-api:
     create: false
 
 identity-portal:
+
   replicaCount: 1
+
   env: 
     "ASPNETCORE_ENVIRONMENT": "Development"
     "AWS_ACCESS_KEY_ID": "test"
@@ -75,7 +78,7 @@ notification-service:
     "AWS_REGION": "us-east-1"
     "AWS_SECRET_ACCESS_KEY": "test"
     "SecretProvider": "aws-local"
-    "SecretProviderUrl":"http://192.168.1.38:4566"
+    "SecretProviderUrl": "http://192.168.1.38:4566"
 
   image:
     repository: localhost:32000/notification-service
@@ -84,7 +87,7 @@ notification-service:
 
   service:
     type: LoadBalancer
-    port: 8080
+    port: 80
 
   ingress:
     enabled: false
