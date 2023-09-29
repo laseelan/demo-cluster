@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "notification-service.fullname" . }}
+  name: {{ include "audit-service.fullname" . }}
   labels:
-    {{- include "notification-service.labels" . | nindent 4 }}
+    {{- include "audit-service.labels" . | nindent 4 }}
 spec:
 {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
 {{- end }}
   selector:
     matchLabels:
-      {{- include "notification-service.selectorLabels" . | nindent 6 }}
+      {{- include "audit-service.selectorLabels" . | nindent 6 }}
   template:
     metadata:
     {{- with .Values.podAnnotations }}
@@ -18,19 +18,19 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
       labels:
-        {{- include "notification-service.selectorLabels" . | nindent 8 }}
+        {{- include "audit-service.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "notification-service.serviceAccountName" . }}
+      serviceAccountName: {{ include "audit-service.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       volumes:
-      - name: "{{ include "notification-service.fullname" . }}-volume"
+      - name: "{{ include "audit-service.fullname" . }}-volume"
         configMap:
-          name: {{ include "notification-service.fullname" . }}      
+          name: {{ include "audit-service.fullname" . }}      
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
