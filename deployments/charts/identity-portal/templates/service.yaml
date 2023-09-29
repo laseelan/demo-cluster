@@ -9,7 +9,7 @@ spec:
   loadBalancerIP: 172.17.176.120
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: 8080
+      targetPort: http
       protocol: TCP
       name: http
   selector:
