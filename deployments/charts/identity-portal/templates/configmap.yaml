@@ -32,7 +32,7 @@ data:
         "AliasStrategy": "Segment",
         "Options": [
           {
-            "Authority": "https://ebs-v80-qa-20-sso.fischeridentitydev.com/auth/realms/fii1",
+            "Authority": "https://ebs-v80-qa-20-sso.fischeridentitydev.com/auth/realms/fii",
             "ClientId": "identity-portal",
             "PersonaType": "EndUser",
             "ResponseType": "code",
